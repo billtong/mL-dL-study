@@ -23,8 +23,6 @@ upd_ind = zeros(1, 10000);
 
 % start the training loop
 while (error > 0) 
-%***************** ATTENTION PLEASE! CORE PART HERE *******************
-%**********************************************************************
     error = 0;
     for n = 1:N
         x = X(n, :)'; % get the (x,y, ...) of variable X[n]
@@ -42,14 +40,13 @@ while (error > 0)
             count = count - 1;
             error = error + 1;
         end
+        
         % store current parameters for later visualization
         count = count + 1;
         h_w(:, count) = w;
         h_b(1, count) = b;
         upd_ind(1, count) = n;
     end
-        
-%**********************************************************************
 end
 
 % discard unused space

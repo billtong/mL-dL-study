@@ -37,8 +37,6 @@ val_accuracy = [];
 ks = [2, 3, 4, 5, 10, 20, 30, 50, 100];
 
 % loop over ks, evaluate on validation set for each k
-%***************** ATTENTION PLEASE! CORE PART HERE *******************
-%**********************************************************************
 for k = ks
     tic
 
@@ -53,7 +51,6 @@ for k = ks
     fprintf('The Overall Accuarcy on Validation Set Achieved with k = %d :   %.2f %%.\n\n', k, 100*acc);
     val_accuracy= [val_accuracy acc]; %#ok<AGROW>
 end
-%**********************************************************************
 
 % make a line plot on the results
 plot(2:10, val_accuracy, '-o')
@@ -70,8 +67,6 @@ disp('Testing!')
 best_k = ks(ind);
 fprintf('Best k is : %d.\n', best_k);
 
-% ********ATTENTION PLEASE WRITE YOUR OWN CODE FOR TESTING HERE***********
-% ************************************************************************
 % fit a knn model with our best k and predict on test set
 
 % ******** step 1. ********
