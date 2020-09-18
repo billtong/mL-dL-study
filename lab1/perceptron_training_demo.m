@@ -14,7 +14,7 @@ plot(X(31:60, 1), X(31:60, 2), 'b.')
 
 %% get trained parameters w, b and the history value w_h, b_h
 %rng(425)
-rng(225)
+rng(225)    %% random seed generated
 % training 
 [w, b, h_w, h_b, ind] = perceptron(X, y, 0.005);
 
