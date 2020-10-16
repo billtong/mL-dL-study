@@ -40,33 +40,18 @@ show(X, old_membership, n_cluster, centres, 'Cluster centres initialized!')
 
 while true
     % n_sample-by-n_cluster matrix to store all the distance values
-    distance = pdist2(X, centres);
+    distance = pdist2(X, centres, "SquaredEuclidean");
     
 
     % E step: Assign data points to closest clusters.
     [~, membership] = min(distance, [], 2);
     
-    %Show the result of the E step.
+    % Show the result of the E step.
     show(X, membership, n_cluster, centres, 'E step finished: Datapoints re-assigned!')
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % You need to add code here.
     % M step: Update cluster centres based on the new assignment.
-    % You need to use "membership" here.
-    % Save your new centres in variable "centres".
-    % You may find the function "mean" to be useful here.
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    for i = 1 : n_cluster
-        temp = zeros(n_sample, 2);
-        for j = 1 : n_sample
-            %filter the cluster i from x
-            if membership(j) == i
-                temp(j, :) = X(j, :);
-            end
-        end
-        temp((temp==0)) = NaN;
-        centres(i, :) = mean(temp, 'omitnan');
+    for j = 1 : n_cluster
+        centres(j, :) = mean(X(membership == j, :));
     end
     
     %Show the result of the M step.
