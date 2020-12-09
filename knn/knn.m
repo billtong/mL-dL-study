@@ -31,11 +31,11 @@ end
 % compute pair-wise distance from 2 dataset and return M*N distance matrix
 % see "doc pdist2" for more information
 d = pdist2(querys, trains, dist);
-[~, mink_ind] = mink(d, k, 2);
+[~, mink_ind] = mink(d, k, 2); % find the kth minimum element in the d array, return index
 
 % use the following lines to assign value to the return variables.
 knn_label = labels(mink_ind);
 knn_ind = mink_ind;
-pred = mode(knn_label, 2);
+pred = mode(knn_label, 2); % predict the label by the one who has most frequently value in the array
 
 end
